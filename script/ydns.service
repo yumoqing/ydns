@@ -1,0 +1,11 @@
+[Unit]
+Description=dynamic dns service
+Wants=systemd-networkd.service
+
+[Service]
+Type=forking
+ExecStart=su - ymq -c "/home/ymq/py/ydns/script/run.sh &"
+ExecStop=su - ymq -c "/home/ymq/bin/killname ydns/script/run.sh"
+[Install]
+WantedBy=multi-user.target
+
